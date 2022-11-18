@@ -10,9 +10,6 @@
                 <div class="input-group-append ml-2">
                     <button class="form-control btn btn-success" >Add Task</button>
                 </div>
-                <div class="input-group-append ml-2">
-                    <button class="form-control btn btn-success" >Purchase Book</button>
-                </div>
             </div>
         </div>
         <div class="col-sm-2"></div>
@@ -23,18 +20,18 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Text</th>
-                    <th></th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Text</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let book of booksObject.books; index as i; first as isFirst">
-                    <td>{{book.name}}</td>
-                    <td>{{book.description}}</td>
-                    <td>{{book.text}}</td>
-                    <button class="btn btn-primary mt-1 ml-2 mr-2" >Purchase</button>
+                        <td>{{book.name}}</td>
+                        <td>{{book.description}}</td>
+                        <td>{{book.text}}</td>
+                        <td> <button class="btn btn-primary mt-1 ml-2 mr-2" >Purchase</button> </td>
                     </tr>
                 </tbody>
                 </table>

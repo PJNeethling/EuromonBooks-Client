@@ -2,10 +2,10 @@
   <nav class="navbar navbar-expand navbar-dark bg-success">
     <a href="#" class="navbar-brand">{{ title }}</a>
     <ul class="navbar-nav mr-auto" routerLinkActive="active">
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="isLoggedIn">
         <a href="/home" class="nav-link" routerLink="subscriptions">Home</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="isLoggedIn">
         <a href="/books" class="nav-link" routerLink="books">Books</a>
       </li>
     </ul>

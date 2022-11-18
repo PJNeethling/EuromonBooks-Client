@@ -31,7 +31,7 @@ export class SubscriptionsComponent implements OnInit {
     this.subscriptionService.getSubscriptionBooks().subscribe(
       {
         next: (data => {
-          this.checkSubscriptions(data);
+          this.hasSubscriptions = this.checkSubscriptions(data);
           this.booksObject = data;
         }),
         error: (() => {
