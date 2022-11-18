@@ -10,6 +10,7 @@ import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
 import { ErrorInterceptorProvider } from './interceptors/error.interceptor';
 import { BooksComponent } from './books/books.component';
 import { ProfileComponent } from './profile/profile.component';
+import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ProfileComponent } from './profile/profile.component';
     LoginComponent,
     SignupComponent,
     BooksComponent,
-    ProfileComponent
+    ProfileComponent,
+    SubscriptionsComponent
   ],
   imports: [
     BrowserModule,

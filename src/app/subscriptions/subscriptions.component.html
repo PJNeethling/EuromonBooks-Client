@@ -1,0 +1,41 @@
+<div class="container mt-3">
+    <div class="row mt-2 justify-content-center">
+        <h2>Book Subscriptions</h2>
+    </div>
+    <div class="row" *ngIf="hasSubscriptions">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Text</th>
+                    <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let book of booksObject.books; index as i; first as isFirst">
+                    <td>{{book.name}}</td>
+                    <td>{{book.description}}</td>
+                    <td>{{book.text}}</td>
+                    <td><button class="btn btn-danger mt-1 ml-2 mr-2" >Remove</button></td>
+                    </tr>
+                </tbody>
+                </table>
+                <!-- <div class="list-group col-sm-10 mt-2" *ngFor="let task of tasks$ | async">
+                    <a role="button" (click)="updateTask(task)" class="list-group-item list-group-item-action"
+                        [ngClass]="{'list-group-item-success': task.isCompleted}">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="mb-1">{{ task.name }}</h5>
+                            <small>{{ task.ts | date }}</small>
+                        </div>
+    
+                    </a>
+                    <button class="btn btn-danger" (click)="removeTask(task)">Remove</button> -->
+                 <!-- <button class="btn btn-danger" (click)="removeTask(task)">Remove</button> -->
+        </div>
+
+        <div class="col-sm-2"></div>
+    </div>
+</div>
