@@ -1,25 +1,35 @@
 <div class="container mt-3">
   <div class="row m-3 justify-content-center">
-    <h2>Sign up</h2>
+    <h2>Register</h2>
   </div>
   <div class="row">
     <div class="col-md-12">
       <div class="card card-container p-3">
         <form #ngSignup="ngForm" name="form" (ngSubmit)="onSubmit()" *ngIf="!isSuccessful" novalidate>
 
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="email">Email</label>
             <input type="text" class="form-control" name="email" [(ngModel)]="signupRequest.email" email
               #email="ngModel" />
             <div class="alert-danger" *ngIf="ngSignup.submitted && email.errors">
               <div *ngIf="email.errors['email']">Invalid Email</div>
             </div>
+          </div> -->
+          <div class="form-group">
+            <label for="userName">User Name</label>
+            <input type="text" class="form-control" name="userName" [(ngModel)]="signupRequest.userName" required 
+              #userName="ngModel" />
+            <div class="alert-danger" *ngIf="ngSignup.submitted && userName.errors">
+              <div *ngIf="userName.errors['required']">User Name is required</div>
+            </div>
           </div>
 
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" name="password" [(ngModel)]="signupRequest.password" required
-              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}" #password="ngModel" />
+            <!-- <input type="password" class="form-control" name="password" [(ngModel)]="signupRequest.password" required
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}" #password="ngModel" /> -->
+              <input type="password" class="form-control" name="password" [(ngModel)]="signupRequest.password" required
+              pattern="(.*[a-z])" #password="ngModel" />
             <div class="alert-danger" *ngIf="ngSignup.submitted && password.errors">
               <div *ngIf="password.errors['required']">Password is required</div>
               <div *ngIf="password.errors['pattern']"> Enter a strong password. At least one number and one uppercase
@@ -43,32 +53,26 @@
 
           <div class="form-group">
             <label for="firstName">First Name</label>
-            <input type="text" class="form-control" name="firstName" [(ngModel)]="signupRequest.firstName" required
+            <input type="text" class="form-control" name="firstName" [(ngModel)]="signupRequest.firstName"
               #firstName="ngModel" />
-            <div class="alert-danger" *ngIf="ngSignup.submitted && firstName.errors">
-              <div *ngIf="firstName.errors['required']">First name is required</div>
-            </div>
           </div>
 
           <div class="form-group">
             <label for="firstName">Last Name</label>
-            <input type="text" class="form-control" name="lastName" [(ngModel)]="signupRequest.lastName" required
+            <input type="text" class="form-control" name="lastName" [(ngModel)]="signupRequest.lastName"
               #lastName="ngModel" />
-            <div class="alert-danger" *ngIf="ngSignup.submitted && lastName.errors">
-              <div *ngIf="lastName.errors['required']">Last name is required</div>
-            </div>
           </div>
 
           <div class="form-group">
-            <input class="btn btn-primary btn-block" type="submit" value="Sign Up" />
+            <input class="btn btn-primary btn-block" type="submit" value="Register" />
           </div>
           <div class="alert alert-warning" *ngIf="ngSignup.submitted && isSignUpFailed">
             Signup failed!<br />{{ errorMessage }}
           </div>
         </form>
         <div class="alert alert-success" *ngIf="isSuccessful">
-          Congrats! You have signed up successfully.
-          You can login now to your account.
+          Congrats! You have registered successfully.
+          You can now login into your account.
         </div>
       </div>
     </div>

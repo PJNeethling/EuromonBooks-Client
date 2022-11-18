@@ -8,7 +8,7 @@ import { TokenService } from './services/token.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Tasks App';
+  title = 'Euromon Books';
   isLoggedIn = false;
   constructor(private tokenService: TokenService, private router: Router) { }
 

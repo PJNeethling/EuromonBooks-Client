@@ -8,7 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
 import { ErrorInterceptorProvider } from './interceptors/error.interceptor';
-import { TasksComponent } from './tasks/tasks.component';
+import { BooksComponent } from './books/books.component';
 import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
@@ -16,7 +16,7 @@ import { ProfileComponent } from './profile/profile.component';
     AppComponent,
     LoginComponent,
     SignupComponent,
-    TasksComponent,
+    BooksComponent,
     ProfileComponent
   ],
   imports: [

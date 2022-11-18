@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { LoginRequest } from '../requests/login-request';
 import { SignupRequest } from '../requests/signup-request';
 import { TokenResponse } from '../responses/token-response';
+import { CustomTokenResponse } from '../responses/token-response';
 import { UserResponse } from '../responses/user-response';
 
 @Injectable({
@@ -14,21 +15,21 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
-  login(loginRequest: LoginRequest): Observable<TokenResponse> {
-    return this.httpClient.post<TokenResponse>(`${environment.apiUrl}/users/login`, loginRequest);
+  login(loginRequest: LoginRequest): Observable<CustomTokenResponse> {
+    return this.httpClient.post<CustomTokenResponse>(`${environment.apiUrl}/v1/login`, loginRequest);
   }
 
   signup(SignupRequest: SignupRequest) {
-    return this.httpClient.post(`${environment.apiUrl}/users/signup`, SignupRequest, { responseType: 'text'}); // response type specified, because the API response here is just a plain text (email address) not JSON
+    return this.httpClient.post(`${environment.apiUrl}/v1/user/register`, SignupRequest, { responseType: 'json'}); // response type specified, because the API response here is just a plain text (email address) not JSON
   }
 
-  refreshToken(session: TokenResponse) {
-    let refreshTokenRequest: any = {
-      UserId: session.userId,
-      RefreshToken: session.refreshToken
-    };
-    return this.httpClient.post<TokenResponse>(`${environment.apiUrl}/users/refresh_token`, refreshTokenRequest);
-  }
+  // refreshToken(session: CustomTokenResponse) {
+  //   // let refreshTokenRequest: any = {
+  //   //   UserId: session.userId,
+  //   //   RefreshToken: session.refreshToken
+  //   // };
+  //   return this.httpClient.post<TokenResponse>(`${environment.apiUrl}/users/refresh_token`, refreshTokenRequest);
+  // }
 
   logout() {
     return this.httpClient.post(`${environment.apiUrl}/users/signup`, null);

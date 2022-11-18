@@ -4,3 +4,8 @@ export interface TokenResponse {
     firstName: string;
     userId: number
 }
+
+export interface CustomTokenResponse {
+    token: string;
+    uUid: string;
+}

@@ -9,7 +9,8 @@ import { UserService } from '../services/user.service';
 })
 export class SignupComponent implements OnInit {
   signupRequest: SignupRequest = {
-    email: "",
+    //email: "",
+    userName: "",
     password: "",
     confirmPassword: "",
     firstName: "",
@@ -23,7 +24,7 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
   }
   onSubmit(): void {
-    console.log(JSON.stringify(this.signupRequest));
+    //console.log(JSON.stringify(this.signupRequest));
 
     this.userService.signup(this.signupRequest).subscribe({
       next: data => {

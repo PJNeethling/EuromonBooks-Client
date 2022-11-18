@@ -3,12 +3,15 @@
     <a href="#" class="navbar-brand">{{ title }}</a>
     <ul class="navbar-nav mr-auto" routerLinkActive="active">
       <li class="nav-item">
-        <a href="/home" class="nav-link" routerLink="tasks">Home</a>
+        <a href="/home" class="nav-link" routerLink="books">Home</a>
+      </li>
+      <li class="nav-item">
+        <a href="/books" class="nav-link" routerLink="books">Books</a>
       </li>
     </ul>
     <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
       <li class="nav-item">
-        <a href="/signup" class="nav-link" routerLink="signup">Sign up</a>
+        <a href="/signup" class="nav-link" routerLink="signup">Register</a>
       </li>
       <li class="nav-item">
         <a href="/login" class="nav-link" routerLink="login">Login</a>

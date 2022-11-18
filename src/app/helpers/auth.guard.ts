@@ -24,25 +24,25 @@ export class AuthGuard implements CanActivate {
 
       console.log(`session is expired, let's renew the tokens`);
       // refresh token
-      return this.checkSession(session);
+      //return this.checkSession(session);
     }
     return true;
   }
 
-  checkSession(session: TokenResponse): Observable<boolean> {
-    return this.tokenService.refreshToken(session).pipe(
-      map(data => {
-        console.log(`refreshToken repsonse is ${JSON.stringify(data)}`);
-        this.tokenService.saveSession(data);
-        return true;
-      }),
-      catchError((error: ErrorResponse) => {
-        console.log(`inside checkSession ${JSON.stringify(error)}`);
-        this.router.navigate(['/login']);
-        return EMPTY;
-      })
-    );
+  // checkSession(session: TokenResponse): Observable<boolean> {
+  //   return this.tokenService.refreshToken(session).pipe(
+  //     map(data => {
+  //       console.log(`refreshToken repsonse is ${JSON.stringify(data)}`);
+  //       this.tokenService.saveSession(data);
+  //       return true;
+  //     }),
+  //     catchError((error: ErrorResponse) => {
+  //       console.log(`inside checkSession ${JSON.stringify(error)}`);
+  //       this.router.navigate(['/login']);
+  //       return EMPTY;
+  //     })
+  //   );
 
-  }
+  // }
 
 }
