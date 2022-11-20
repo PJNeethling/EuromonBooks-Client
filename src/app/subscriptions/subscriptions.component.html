@@ -19,7 +19,7 @@
                     <td>{{book.name}}</td>
                     <td>{{book.description}}</td>
                     <td>{{book.text}}</td>
-                    <td><button class="btn btn-danger mt-1 ml-2 mr-2" >Remove</button></td>
+                    <td><button (click)="removeSubscriptionBook(book)" class="btn btn-danger mt-1 ml-2 mr-2" >Remove</button></td>
                     </tr>
                 </tbody>
                 </table>

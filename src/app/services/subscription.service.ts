@@ -18,16 +18,10 @@ export class SubscriptionService {
     return this.httpClient.get<Books>(`${environment.apiUrl}/v1/user/${session?.uUid}/books`);
   }
 
-  // saveTask(task: TaskResponse): Observable<TaskResponse> {
-  //   return this.httpClient.post<TaskResponse>(`${environment.apiUrl}/tasks`, task);
-  // }
+  removeSubscriptionBook(bookId: number) {
+    let session = this.tokenService.getSession();
 
-  // updateTask(task: TaskResponse): Observable<TaskResponse> {
-  //   return this.httpClient.put<TaskResponse>(`${environment.apiUrl}/tasks`, task);
-  // }
-
-  // deleteTask(taskId: number) {
-  //   return this.httpClient.delete<TaskResponse>(`${environment.apiUrl}/tasks/${taskId}`);
-  // }
+    return this.httpClient.delete<BookResponse>(`${environment.apiUrl}/v1/user/${session?.uUid}/book/${bookId}`);
+  }
   
 }

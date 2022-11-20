@@ -3,6 +3,9 @@ import { Observable } from 'rxjs';
 import { BookService } from '../services/book.service';
 import BookResponse from '../responses/book-response';
 import Books from '../responses/books-response';
+import { Router } from '@angular/router';
+import { ErrorResponseDetails } from '../responses/error-response';
+import { Error } from '../responses/error-response';
 
 @Component({
   selector: 'app-books',
@@ -23,7 +26,14 @@ export class BooksComponent implements OnInit {
     totalItems: 0,
     books: this.bookItem
   };
-  constructor(private bookService: BookService) { }
+
+  bookPurchasedFailed: boolean = false;
+  errorDetails: ErrorResponseDetails = { message: '', code: 0 };
+  error: Error = { 
+    error: this.errorDetails
+  };
+
+  constructor(private bookService: BookService, private router: Router) { }
 
   ngOnInit(): void {
     // this.booksObject = this.bookService.getBooks();
@@ -42,31 +52,19 @@ export class BooksComponent implements OnInit {
     );
   }
 
-  // addTask(): void {
-  //   if (!this.newTaskString){
-  //     return;
-  //   }
-  //   let task: BookResponse = {
-  //     id: 0,
-  //     isCompleted: false,
-  //     name: this.newTaskString,
-  //     ts: new Date()
-  //   };
-  //   this.taskService.saveTask(task).subscribe(() => this.tasks$ = this.taskService.getTasks());
-  // }
-
-  // updateTask(task: TaskResponse) {
-  //   console.log('inside updatetask');
-  //   console.log(`task id is ${task.id}`);
-  //   task.isCompleted = !task.isCompleted;
-  //   this.taskService.updateTask(task).subscribe(() => {});
-
-  // }
-
-  // removeTask(task: TaskResponse) {
-  //   console.log('inside removeTask');
-  //   console.log(`task id is ${task.id}`);
-  //   this.taskService.deleteTask(task.id).subscribe(() => this.tasks$ = this.taskService.getTasks());
-  // }
+  purchaseBook(book: BookResponse): void {
+    this.bookService.purchaseBook(book).subscribe(
+      {
+        next: (() => {
+          this.router.navigate(['subscriptions']);
+        }),
+        error: ((error) => {
+          console.log('failed to get the list of books');
+          this.error = error;
+          this.bookPurchasedFailed = true;
+        })
+      }
+      );
+  }
 
 }

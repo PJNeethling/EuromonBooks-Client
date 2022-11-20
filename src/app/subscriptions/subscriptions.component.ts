@@ -47,4 +47,23 @@ export class SubscriptionsComponent implements OnInit {
     }
     return false;
   }
+
+  removeSubscriptionBook(book: BookResponse) {
+    console.log('inside removeBook');
+    console.log(`book id is ${book.id}`);
+    this.subscriptionService.removeSubscriptionBook(book.id).subscribe(
+      {
+        next: (() => {
+          this.reloadPage();
+        }),
+        error: (() => {
+          console.log('failed to get the list of books');
+        })
+      }
+      );
+  }
+
+  reloadPage(): void {
+    window.location.reload();
+  }
 }
