@@ -35,8 +35,9 @@ export class UserService {
     return this.httpClient.post(`${environment.apiUrl}/users/signup`, null);
   }
 
-  getUserInfo(): Observable<UserResponse> {
-    return this.httpClient.get<UserResponse>(`${environment.apiUrl}/users/info`);
+  getUserInfo(uUid: string): Observable<UserResponse> {
+    //let session = this.tokenService.getSession();
+    debugger;
+    return this.httpClient.get<UserResponse>(`${environment.apiUrl}/v1/user/${uUid}`);
   }
-
 }
