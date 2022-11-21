@@ -28,6 +28,7 @@ export class BooksComponent implements OnInit {
   };
 
   bookPurchasedFailed: boolean = false;
+  booksExists: boolean = false;
   errorDetails: ErrorResponseDetails = { message: '', code: 0 };
   error: Error = { 
     error: this.errorDetails
@@ -36,13 +37,11 @@ export class BooksComponent implements OnInit {
   constructor(private bookService: BookService, private router: Router) { }
 
   ngOnInit(): void {
-    // this.booksObject = this.bookService.getBooks();
-
-
     this.bookService.getBooks().subscribe(
       {
         next: (data => {
           this.booksObject = data;
+          this.booksExists = true;
         }),
         error: (() => {
           console.log('failed to get the list of books');

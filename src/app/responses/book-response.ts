@@ -1,4 +1,3 @@
-import { DecimalPipe } from "@angular/common";
 
 export default interface BookResponse {
     id: number;
@@ -7,5 +6,4 @@ export default interface BookResponse {
     purchasePrice: number;
     text: string;
     isActive: boolean;
-    // ts: Date;
 }

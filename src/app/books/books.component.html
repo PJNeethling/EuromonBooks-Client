@@ -1,4 +1,4 @@
-<div class="container bootstrap snipets">
+<div class="container bootstrap snipets" *ngIf="booksExists">
     <h1 class="text-center text-muted">Books catalog</h1>
     <div class="row flow-offset-1">
     <div class="col-xs-6 col-md-4" *ngFor="let book of booksObject.books; index as i; first as isFirst">
@@ -8,7 +8,7 @@
                 <button (click)="purchaseBook(book)" class="btn btn-primary float-sm-right mt-1" >Purchase</button>
             </div>
             <h6>{{book.name}}</h6><span class="price">
-            <del>{{book.purchasePrice}}</del></span><span class="price sale">$12.49</span>
+            </span><span class="price sale">R{{book.purchasePrice}}</span>
         </div>
         </div>
     </div>

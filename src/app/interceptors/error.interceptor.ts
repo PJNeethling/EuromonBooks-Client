@@ -30,14 +30,6 @@ export class ErrorInterceptor implements HttpInterceptor {
           if (error.status === 401 && session != null && !this.tokenService.isLoggedIn() && !this.isRefreshingToken) {
             this.isRefreshingToken = true;
             console.log('Access Token is expired, we need to renew it');
-            // this.userService.refreshToken(session).subscribe({
-            //   next: data => {
-            //     console.info('Tokens renewed, we will save them into the local storage');
-            //     this.tokenService.saveSession(data);
-            //   },
-            //   error: () => { },
-            //   complete: () => { this.isRefreshingToken = false }
-            // });
           } else if (error.status === 400 && error.error.errorCode === 'invalid_grant') {
             console.log('the refresh token has expired, the user must login again');
             this.tokenService.logout();

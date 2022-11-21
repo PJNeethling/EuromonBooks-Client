@@ -24,8 +24,6 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
   }
   onSubmit(): void {
-    //console.log(JSON.stringify(this.signupRequest));
-
     this.userService.signup(this.signupRequest).subscribe({
       next: data => {
         console.log(data);

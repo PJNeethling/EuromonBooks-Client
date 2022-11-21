@@ -23,21 +23,11 @@ export class UserService {
     return this.httpClient.post(`${environment.apiUrl}/v1/user/register`, SignupRequest, { responseType: 'json'}); // response type specified, because the API response here is just a plain text (email address) not JSON
   }
 
-  // refreshToken(session: CustomTokenResponse) {
-  //   // let refreshTokenRequest: any = {
-  //   //   UserId: session.userId,
-  //   //   RefreshToken: session.refreshToken
-  //   // };
-  //   return this.httpClient.post<TokenResponse>(`${environment.apiUrl}/users/refresh_token`, refreshTokenRequest);
-  // }
-
   logout() {
     return this.httpClient.post(`${environment.apiUrl}/users/signup`, null);
   }
 
   getUserInfo(uUid: string): Observable<UserResponse> {
-    //let session = this.tokenService.getSession();
-    debugger;
     return this.httpClient.get<UserResponse>(`${environment.apiUrl}/v1/user/${uUid}`);
   }
 }

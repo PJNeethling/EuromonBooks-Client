@@ -24,8 +24,8 @@ import { SubscriptionsComponent } from './subscriptions/subscriptions.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [
     AuthInterceptorProvider,
