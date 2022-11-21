@@ -50,9 +50,12 @@
           </div>
 
           <div class="form-group">
-            <input class="btn btn-primary btn-block" type="submit" value="Register" />
+            <button type="submit" class="btn btn-primary btn-block" [disabled]="loading">
+              Register
+              <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
+            </button>
           </div>
-          <div class="alert alert-warning" *ngIf="ngSignup.submitted && isSignUpFailed">
+          <div class="alert alert-danger" *ngIf="ngSignup.submitted && isSignUpFailed">
             Signup failed!<br />{{ errorMessage }}
           </div>
         </form>

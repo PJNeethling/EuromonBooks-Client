@@ -17,6 +17,7 @@ export class SignupComponent implements OnInit {
     lastName: "",
     ts: new Date().toISOString()
   };
+  loading: boolean = false;
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
@@ -24,13 +25,16 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
   }
   onSubmit(): void {
+    this.loading = true;
     this.userService.signup(this.signupRequest).subscribe({
       next: data => {
+        this.loading = false;
         console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
       },
       error: err => {
+        this.loading = false;
         this.errorMessage = err.error.message;
         this.isSignUpFailed = true;
       }

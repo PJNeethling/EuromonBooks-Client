@@ -27,6 +27,7 @@ export class BooksComponent implements OnInit {
     books: this.bookItem
   };
 
+  loading: boolean = false;
   bookPurchasedFailed: boolean = false;
   booksExists: boolean = false;
   errorDetails: ErrorResponseDetails = { message: '', code: 0 };
@@ -52,12 +53,15 @@ export class BooksComponent implements OnInit {
   }
 
   purchaseBook(book: BookResponse): void {
+    this.loading = true;
     this.bookService.purchaseBook(book).subscribe(
       {
         next: (() => {
+          this.loading = false;
           this.router.navigate(['subscriptions']);
         }),
         error: ((error) => {
+          this.loading = false;
           console.log('failed to get the list of books');
           this.error = error;
           this.bookPurchasedFailed = true;

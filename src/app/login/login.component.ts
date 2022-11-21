@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
     password: ""
   };
 
+  loading: boolean = false;
   isLoggedIn = false;
   isLoginFailed = false;
   errorDetails: ErrorResponseDetails = { message: '', code: 0 };
@@ -38,17 +39,19 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-
+    this.loading = true;
     this.userService.login(this.loginRequest).subscribe({
       next: (data => {
         console.debug(`logged in successfully ${data}`);
         console.log(data);
+        this.loading = false;
         this.tokenService.saveSession(data);
         this.isLoggedIn = true;
         this.isLoginFailed = false;
         this.reloadPage();
       }),
       error: ((error: Error) => {
+        this.loading = false;
         this.error = error;
         this.isLoggedIn = false;
         this.isLoginFailed = true;

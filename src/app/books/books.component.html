@@ -1,20 +1,21 @@
 <div class="container bootstrap snipets" *ngIf="booksExists">
     <h1 class="text-center text-muted">Books catalog</h1>
     <div class="row flow-offset-1">
-    <div class="col-xs-6 col-md-4" *ngFor="let book of booksObject.books; index as i; first as isFirst">
-        <div class="book tumbnail thumbnail-1"><a href="#"><img src="https://via.placeholder.com/250x250/37B576/00023" alt=""></a>
-        <div class="caption">
-            <div>
-                <button (click)="purchaseBook(book)" class="btn btn-primary float-sm-right mt-1" >Purchase</button>
+        <div class="col-xs-6 col-md-4" *ngFor="let book of booksObject.books; index as i; first as isFirst">
+            <div class="book tumbnail thumbnail-1"><img src="https://via.placeholder.com/290x250/37B576/00023" alt="">
+            <div class="caption">
+                <div>
+                    <button (click)="purchaseBook(book)" class="btn btn-primary float-sm-right mt-1 mr-5" >
+                        Purchase
+                    </button>
+                </div>
+                <h6>{{book.name}}</h6><span class="price">
+                </span><span class="price sale">R{{book.purchasePrice}}</span>
             </div>
-            <h6>{{book.name}}</h6><span class="price">
-            </span><span class="price sale">R{{book.purchasePrice}}</span>
+            </div>
         </div>
-        </div>
-    </div>
     </div>
 </div>
-
 <div class="form-group col-sm-12">
     <div class="alert alert-danger" role="alert" *ngIf="bookPurchasedFailed">
         Error : {{ error.error.message }}
