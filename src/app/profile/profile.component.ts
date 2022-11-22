@@ -11,7 +11,6 @@ import { TokenService } from '../services/token.service';
 export class ProfileComponent implements OnInit {
   uUid: string = '';
   user: UserResponse = {
-    userName: '',
     email: '',
     firstName: '',
     lastName: '',

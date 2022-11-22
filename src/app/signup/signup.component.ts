@@ -9,8 +9,7 @@ import { UserService } from '../services/user.service';
 })
 export class SignupComponent implements OnInit {
   signupRequest: SignupRequest = {
-    //email: "",
-    userName: "",
+    email: "",
     password: "",
     confirmPassword: "",
     firstName: "",

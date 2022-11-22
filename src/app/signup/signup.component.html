@@ -8,11 +8,11 @@
         <form #ngSignup="ngForm" name="form" (ngSubmit)="onSubmit()" *ngIf="!isSuccessful" novalidate>
 
           <div class="form-group">
-            <label for="userName">User Name</label>
-            <input type="text" class="form-control" name="userName" [(ngModel)]="signupRequest.userName" required 
-              #userName="ngModel" />
-            <div class="alert-danger" *ngIf="ngSignup.submitted && userName.errors">
-              <div *ngIf="userName.errors['required']">User Name is required</div>
+            <label for="email">Email</label>
+            <input type="text" class="form-control" name="email" [(ngModel)]="signupRequest.email" required 
+              #email="ngModel" />
+            <div class="alert-danger" *ngIf="ngSignup.submitted && email.errors">
+              <div *ngIf="email.errors['required']">Email is required</div>
             </div>
           </div>
 
