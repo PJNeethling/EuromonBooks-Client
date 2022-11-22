@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SignupRequest } from '../requests/signup-request';
 import { UserService } from '../services/user.service';
+import { ErrorResponseDetails } from '../responses/error-response';
+import { Error } from '../responses/error-response';
+import { ErrorItemResponse } from '../responses/error-item-response';
 
 @Component({
   selector: 'app-signup',
@@ -19,7 +22,20 @@ export class SignupComponent implements OnInit {
   loading: boolean = false;
   isSuccessful = false;
   isSignUpFailed = false;
-  errorMessage = '';
+  errorItem: ErrorItemResponse[] = [{
+    message: ''
+  }];
+
+  errorDetails: ErrorResponseDetails = { 
+    message: '', 
+    code: 0,
+    errors: this.errorItem
+  };
+
+  error: Error = { 
+    error: this.errorDetails
+  };
+
   constructor(private userService: UserService) { }
   ngOnInit(): void {
   }
@@ -32,11 +48,11 @@ export class SignupComponent implements OnInit {
         this.isSuccessful = true;
         this.isSignUpFailed = false;
       },
-      error: err => {
+      error: ((error: Error)  => {
         this.loading = false;
-        this.errorMessage = err.error.message;
+        this.error = error;
         this.isSignUpFailed = true;
-      }
+      })
     });
   }
 

@@ -6,6 +6,7 @@ import Books from '../responses/books-response';
 import { Router } from '@angular/router';
 import { ErrorResponseDetails } from '../responses/error-response';
 import { Error } from '../responses/error-response';
+import { ErrorItemResponse } from '../responses/error-item-response';
 
 @Component({
   selector: 'app-books',
@@ -27,13 +28,23 @@ export class BooksComponent implements OnInit {
     books: this.bookItem
   };
 
-  loading: boolean = false;
-  bookPurchasedFailed: boolean = false;
-  booksExists: boolean = false;
-  errorDetails: ErrorResponseDetails = { message: '', code: 0 };
+  errorItem: ErrorItemResponse[] = [{
+    message: ''
+  }];
+
+  errorDetails: ErrorResponseDetails = { 
+    message: '', 
+    code: 0,
+    errors: this.errorItem
+  };
+
   error: Error = { 
     error: this.errorDetails
   };
+
+  loading: boolean = false;
+  bookPurchasedFailed: boolean = false;
+  booksExists: boolean = false;
 
   constructor(private bookService: BookService, private router: Router) { }
 

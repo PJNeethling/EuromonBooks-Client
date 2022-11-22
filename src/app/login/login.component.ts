@@ -5,6 +5,7 @@ import { ErrorResponseDetails } from '../responses/error-response';
 import { Error } from '../responses/error-response';
 import { TokenService } from '../services/token.service';
 import { UserService } from '../services/user.service';
+import { ErrorItemResponse } from '../responses/error-item-response';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,15 @@ export class LoginComponent implements OnInit {
   loading: boolean = false;
   isLoggedIn = false;
   isLoginFailed = false;
-  errorDetails: ErrorResponseDetails = { message: '', code: 0 };
+  errorItem: ErrorItemResponse[] = [{
+    message: ''
+  }];
+
+  errorDetails: ErrorResponseDetails = { 
+    message: '', 
+    code: 0,
+    errors: this.errorItem
+  };
   error: Error = { 
     error: this.errorDetails
   };

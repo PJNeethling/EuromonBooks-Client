@@ -55,8 +55,14 @@
               <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
             </button>
           </div>
-          <div class="alert alert-danger" *ngIf="ngSignup.submitted && isSignUpFailed">
-            Signup failed!<br />{{ errorMessage }}
+          <!-- <div class="alert alert-danger" *ngIf="ngSignup.submitted && isSignUpFailed">
+            Signup failed!<br />{{ error.error.message }}
+          </div> -->
+          <div *ngFor="let error of error.error.errors; index as i; first as isFirst">
+            <div class="alert alert-danger" *ngIf="ngSignup.submitted && isSignUpFailed">
+             Signup failed!<br />
+             {{ error.message }}
+            </div>
           </div>
         </form>
         <div class="alert alert-success" *ngIf="isSuccessful">
